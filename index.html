@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -23,7 +23,12 @@
           alt="Moreno's Shoppers"
         >
       </a>
-      <div class="nav-links">
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" id="menu-principal">
         <a href="#inicio">Inicio</a>
         <a href="#como-funciona">Cómo comprar</a>
         <a href="#marcas">Marcas</a>
@@ -94,10 +99,16 @@
       <div class="brands-row">
         <span>Nike</span>
         <span>Apple</span>
-        <span>Zara</span>
         <span>Adidas</span>
-        <span>Shein</span>
-        <span>Amazon</span>
+        <span>Sephora</span>
+        <span>Tommy Hilfiger</span>
+        <span>Karl Lagerfeld</span>
+        <span>Carolina Herrera</span>
+        <span>Michael Kors</span>
+        <span>Calvin Klein</span>
+        <span>Coach</span>
+        <span>Polo Ralph Lauren</span>
+        <span>Guess</span>
       </div>
     </section>
 
@@ -141,7 +152,7 @@
 
     <section class="cta-panel" id="contacto">
       <h2>¿Listo para hacer tu pedido?</h2>
-      <p>Escríbenos por WhatsApp o visítanos en Instagram y te ayudamos a cotizar hoy mismo.</p>
+      <p>Escríbenos por WhatsApp o visítanos en Instagram y TikTok para ayudarte a cotizar hoy mismo.</p>
       <div class="service-notes" aria-label="Información de pagos y envíos">
         <span>Pagos: Mastercard, Visa, Nequi, Daviplata, PSE y efectivo</span>
         <span>Envíos normalmente todos los viernes</span>
@@ -155,7 +166,20 @@
     <p>WhatsApp Colombia: +57 318 508 8338</p>
     <p>WhatsApp USA: +1 669 338 6199</p>
     <p>Instagram: @morenoshoppers.co</p>
+    <p>TikTok: @morenoshoppersusa</p>
   </footer>
+
+  <a
+    class="social-float tiktok-float"
+    href="https://www.tiktok.com/@morenoshoppersusa"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Ver TikTok"
+  >
+    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path d="M23.8 10.2a8.8 8.8 0 0 1-5.1-1.7v10.8a7.4 7.4 0 1 1-6.4-7.3v4.1a3.3 3.3 0 1 0 2.3 3.2V2.7h4a4.8 4.8 0 0 0 5.2 4.2v3.3Z" fill="currentColor"/>
+    </svg>
+  </a>
 
   <a
     class="social-float instagram-float"
@@ -188,6 +212,8 @@
     const themeToggleIcon = document.querySelector('.theme-toggle-icon');
     const themeToggleText = document.querySelector('.theme-toggle-text');
     const logoImage = document.querySelector('.logo img');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
     const savedTheme = localStorage.getItem('moreno-theme');
 
     function setTheme(theme) {
@@ -207,6 +233,24 @@
     themeToggle.addEventListener('click', () => {
       setTheme(document.body.classList.contains('theme-light') ? 'dark' : 'light');
     });
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('is-open');
+
+      menuToggle.classList.toggle('is-open', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('is-open');
+        menuToggle.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menú');
+      });
+    });
   </script>
-</body>
+  </body>
 </html>
+
