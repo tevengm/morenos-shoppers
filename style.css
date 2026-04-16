@@ -708,6 +708,15 @@ body.theme-light .footer {
   .hero {
     padding-top: 140px;
     min-height: auto;
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.36) 52%, rgba(0, 0, 0, 0.82) 100%),
+      url('img/hero-moreno-dark.jpg') center/cover no-repeat;
+  }
+
+  body.theme-light .hero {
+    background:
+      linear-gradient(90deg, rgba(255, 250, 240, 0.94) 0%, rgba(255, 250, 240, 0.72) 42%, rgba(255, 250, 240, 0.28) 100%),
+      url('img/hero-moreno-light.jpg') center/cover no-repeat;
   }
 
   h1 {
