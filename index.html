@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="theme-light">
+<body>
   <header class="topbar">
     <nav class="navbar">
       <a href="#inicio" class="logo" aria-label="Ir al inicio">
@@ -229,7 +229,7 @@
       localStorage.setItem('moreno-theme', theme);
     }
 
-    setTheme(savedTheme || 'light');
+    setTheme(savedTheme || 'dark');
 
     themeToggle.addEventListener('click', () => {
       setTheme(document.body.classList.contains('theme-light') ? 'dark' : 'light');
